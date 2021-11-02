@@ -1,0 +1,59 @@
+.App {
+  max-width: 1024px;
+  margin: 0 auto;
+  color: var(--dark-grey);
+}
+
+.App-header {
+  background: var(--accent-color);
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 40px;
+  color: white;
+  
+}
+
+.waydoc-data {
+  padding: 20px 40px;
+}
+
+.waydoc-data-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+    
+}
+
+.submit-btn {
+  width: 30%;
+}
+
+.text-label {  
+  width: 19%;
+  margin: auto;  
+}
+
+.text-input {
+  width: 79%;
+  margin: 5px auto;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 5px; 
+  box-shadow: 1px 1px 2px var(--shadow-grey);  
+  font-family: "Roboto", sans-serif;
+}
+
+.submit-btn {
+  width: 79%;
+  margin: 5px auto;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 5px; 
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 1px 1px 2px var(--shadow-grey);  
+  font-family: "Roboto", sans-serif;  
+  font-size: 1.2em;
+}
