@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import data_js from "./data";
+import { data_obj, desc_data_obj } from "./data";
 import TextInputField from "./TextIInputField";
 import { useState, useEffect } from "react";
 import waydoc_tmp from "./files/waydoc_tmp.htm";
@@ -22,22 +22,23 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // open template file
     let response = await fetch(waydoc_tmp);
     let blob = await response.blob();
 
+    // read file as text and replace template strings
     const reader = new FileReader();
     reader.onload = async (e) => {
       const text = e.target.result;
       let editedText = text;
-      fields.map((item) => {        
+      fields.forEach((item) => {
         var re = new RegExp("{" + item.key.toUpperCase() + "}", "g");
-        console.log(re, item.value);
+        console.log(re)
         editedText = editedText.replace(re, item.value);
       });
       var textFile = makeTextFile(editedText);
       window.open(textFile, "_blank");
     };
-
     reader.readAsText(blob);
   };
 
@@ -45,9 +46,25 @@ function App() {
     let new_fields = [];
 
     // Base fields
-    for (const [key, value] of Object.entries(data_js)) {
+    for (const [key, value] of Object.entries(data_obj)) {
       if (key !== "fuels" && key !== "cust_docs") {
         new_fields.push({ key, value });
+      }
+    }
+
+    // Fuel fields
+    for (const item of data_obj.fuels) {
+      for (const [key, value] of Object.entries(item)) {
+        const new_key = key + (data_obj.fuels.indexOf(item) + 1)
+        new_fields.push({ key: new_key, value });
+      }
+    }
+
+    // Cust doc fields
+    for (const item of data_obj.cust_docs) {
+      for (const [key, value] of Object.entries(item)) {
+        const new_key = key + (data_obj.cust_docs.indexOf(item) + 1)
+        new_fields.push({ key: new_key, value });
       }
     }
 
@@ -63,20 +80,21 @@ function App() {
         <form className="waydoc-data-form" onSubmit={handleSubmit}>
           {fields.length > 0 &&
             fields.map((item, index) => {
+              const label = desc_data_obj[item.key] ? desc_data_obj[item.key] : desc_data_obj[item.key.substring(0, item.key.length - 1)]
               return (
                 <TextInputField
                   key={index}
                   name={item.key}
-                  label={item.key}
+                  label={label}
                   value={item.value}
-                  fields = {fields}
-                  setFields = {setFields}
+                  fields={fields}
+                  setFields={setFields}
                 />
               );
             })}
           <label className="text-label"></label>
           <button className="submit-btn" type="submit">
-            Print
+            Печать
           </button>
         </form>
       </section>
@@ -85,3 +103,4 @@ function App() {
 }
 
 export default App;
+

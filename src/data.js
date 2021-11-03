@@ -1,7 +1,7 @@
-const data = {
+export const data_obj = {
   lot: "ФРГ",
   num: "060916",
-  date: "01.01.2019",
+  date: "02.01.2019",
   org: "Филиал ООО 'Бобисробис' в г. Иваново",
   org_addr:
     "111000, Ивановская обл., г. Иваново, Быстрый тупик, дом № 2; +7 (6666) 666 - 666; ОГРН: 10101010101010",
@@ -10,18 +10,24 @@ const data = {
   veh_num_garage: "288",
   veh_tires:
     "195/75R16 2517З; 195/75R16 2517З; 195/75R16 2517З; 195/75R16 2517З; 195/75R16 2517З; 195/75R16 2517З; 195/75R16 Л",
-  driver: "Зайцев Виталий Владимирович",
-  driver_docs: "3903 367936  ,B,BE,C,CE,D,DE,",
+  driver: "Иванов Виталий Владимирович",
+  driver_short: "Иванов В. В.",
+  driver_docs: "3209 900900  ,B,BE,C,D,",
+  driver_num: "0005525",
   start_time: "08:00",
-  start_date: "01.01.19",
+  start_date: "02.01.19",
   end_time: "20:00",
-  end_date: "01.01.19",
-  start_fact: "01.01.19 08:00",
+  end_date: "03.01.19",
+  start_fact: "01.01.19 08:02",
   disp: "Попович",
   fuels: [
     {
       fuel_type: "Дизтопливо",
       start_amount: "0",
+    },
+    {
+      fuel_type: "",
+      start_amount: "",
     },
   ],
   cust_docs: [
@@ -30,14 +36,55 @@ const data = {
       cust_num: "001",
       cust_client_desc:
         "АО Филиал 'Ивановская ГЭС-4', ОЭ ИГЭС,  город Иваново переулок Переулков,2, дежурный СС, +7(666) 666-66-66,  по маршруту деж автобуса",
-      cust_start: "01.01.2019 08:00",
-      cust_end: "01.01.2019 20:00",
-      cust_hours: "12",
-      cust_org: "АО Филиал 'Калининградская ТЭЦ-2', ОЭ КТЭЦ",
+      cust_start: "03.01.2019 08:01",
+      cust_end: "04.01.2019 20:01",
+      cust_hours: "13",
+      cust_org: "АО Филиал 'Ивановская ГЭС-4', ОЭ ИГЭС",
       cust_addr:
         "Российская Федерация, 100100, г. Иваново, пер. Переулков, 2, тел. 8 (6666) 66-66-66, 66-66-66",
+    },
+    {
+      cust_lot: "",
+      cust_num: "",
+      cust_client_desc: "",
+      cust_start: "",
+      cust_end: "",
+      cust_hours: "",
+      cust_org: "",
+      cust_addr:
+        "",
     },
   ],
 };
 
-export default data;
+export const desc_data_obj = {
+  lot: "Серия ПЛ",
+  num: "Номер ПЛ",
+  date: "Дата ПЛ",
+  org: "Организация",
+  org_addr: "Адрес организации",
+  veh_model: "Модель ТС",
+  veh_num_plate: "Гос. номер",
+  veh_num_garage: "Гар. номер",
+  veh_tires: "Шины ТС",
+  driver: "Водитель",
+  driver_short: "Водитель (сокр.)",
+  driver_docs: "Документы водителя",
+  driver_num: "Табельный номер",
+  start_time: "Время выезда",
+  start_date: "Дата выезда",
+  end_time: "Время возвращения",
+  end_date: "Дата возвращения",
+  start_fact: "Время выезда (факт)",
+  disp: "Диспетчер",
+  fuel_type: "Тип топлива",
+  start_amount: "Нач. остаток",
+  cust_lot: "Серия ТЗ",
+  cust_num: "Номер ТЗ",
+  cust_client_desc: "Описание клиента",
+  cust_start: "Время начала",
+  cust_end: "Время окончания",
+  cust_hours: "Часы работы",
+  cust_org: "Клиент",
+  cust_addr: "Адрес клиента",
+};
